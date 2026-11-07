@@ -1,0 +1,23 @@
+# datasets and intermediate features (re-created by preprocess.py)
+English/data/
+Telugu/data/
+
+# training-time logs live in <Lang>/logs; the CSVs are copied to Results/<Lang>/logs
+English/logs/
+Telugu/logs/
+
+# full training checkpoints (~400 MB each, contain optimizer state) -> Git LFS or external link
+English/checkpoints/*.pth.tar
+Telugu/checkpoints/*.pth.tar
+# the fp16 inference exports (*_fastspeech2_fp16.pth, ~66 MB) ARE committed
+
+# vocoder weights are downloaded (see README > Vocoder)
+vocoder/*.pth.tar
+vocoder/*.zip
+
+# mel arrays saved next to test audios (re-creatable; keep the repo small)
+Results/*/test_generated_audios/*_mel.npy
+
+__pycache__/
+*.pyc
+.ipynb_checkpoints/

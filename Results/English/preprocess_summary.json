@@ -1,0 +1,31 @@
+{
+  "train_utterances": 3683,
+  "val_utterances": 835,
+  "train_hours": 4.819,
+  "val_hours": 1.063,
+  "n_speakers": 115,
+  "skipped": {
+    "no_voiced_frames": 2,
+    "too_short": 1
+  },
+  "stats": {
+    "pitch": [
+      -3.0863778591156006,
+      8.633646965026855,
+      177.10755420277522,
+      57.38362955902998
+    ],
+    "energy": [
+      -1.3868484497070312,
+      6.538403511047363,
+      52.67984855949273,
+      37.985293412232984
+    ]
+  },
+  "vocab_size": 71,
+  "phones_seen_in_train": 70,
+  "phones_never_seen_in_train": [],
+  "f0_method": "pyworld DIO + StoneMask",
+  "pitch_feature": "phoneme_level",
+  "energy_feature": "phoneme_level"
+}

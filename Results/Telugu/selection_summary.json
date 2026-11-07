@@ -1,0 +1,29 @@
+{
+  "train_utterances": 2743,
+  "val_utterances": 563,
+  "train_hours_after_trim": 4.501,
+  "val_hours_after_trim": 0.903,
+  "speakers": [
+    "female",
+    "male"
+  ],
+  "lexicon_words": 12040,
+  "lexicon_entries": 12040,
+  "dropped": {},
+  "rows_in_dataset": 8576,
+  "dropped_by_text_filter": 43,
+  "speaker_columns_used": [
+    "gender"
+  ],
+  "speaker_hours_available": {
+    "female": 1.889858107638889,
+    "male": 6.206934021990741
+  },
+  "speakers_kept": [
+    "female",
+    "male"
+  ],
+  "policy": "auto",
+  "dataset": "SPRINGLab/IndicTTS_Telugu",
+  "selection_policy": "speaker-stratified random sampling (seed 1234), hours budget 5.0 h train / 1.0 h val, no utterance in both splits"
+}

@@ -1,0 +1,22 @@
+# Python >= 3.9. Tested environment target: Google Colab / Kaggle (CUDA GPU).
+# PyTorch is intentionally not pinned: use the CUDA build your platform provides
+# (Colab/Kaggle ship one). For a local install see https://pytorch.org/get-started/
+torch>=2.0
+
+numpy>=1.23
+scipy>=1.9
+matplotlib>=3.6
+pyyaml>=6.0
+soundfile>=0.12          # audio decoding (wav/flac) inside the HF datasets
+pyworld>=0.3.4           # F0: DIO + StoneMask, as in the paper (App. C.2)
+
+# English text frontend
+g2p_en==2.1.0
+nltk>=3.8
+
+# dataset download
+datasets>=2.18
+huggingface_hub>=0.20
+
+# NOT pip-installable, installed separately (see README > Forced alignment):
+#   montreal-forced-aligner (conda-forge)

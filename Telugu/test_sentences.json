@@ -1,0 +1,10 @@
+{
+  "_source": "Assignment PDF, section 3 'Telugu Test Sentences', transcribed from the rendered glyphs. The PDF's embedded text layer splits Telugu conjuncts and vowel signs (e.g. it yields 'వచ్చ ింది' for the rendered 'వచ్చింది'); those artefacts of PDF text extraction are NOT in the sentence as shown. The space visibly present inside 'అడ విలో' (T3) is kept exactly as provided. Sub-sentences (a)/(b) of T2 are synthesised separately.",
+  "sentences": [
+    ["T1", "న్యూరోఫార్మకోలాజికల్ పరిశోధనలో నూతన ఔషధాల ప్రభావాన్ని విశ్లేషించారు."],
+    ["T2_a", "తాడుపై అతని పట్టు చాలా బలంగా ఉంది."],
+    ["T2_b", "ఆమె పట్టు చీరను ధరించి వేడుకకు వచ్చింది."],
+    ["T3", "పులి అడ విలో నిశ్శబ్దంగా నడిచింది."],
+    ["T4", "ఈ సమావేశం 2026 నవంబర్ 12వ తేదీ ఉదయం 10:45 గంటలకు ప్రారంభమవుతుంది, సమయానికి సిద్ధంగా ఉంచండి."]
+  ]
+}

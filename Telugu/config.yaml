@@ -1,0 +1,105 @@
+# FastSpeech 2 - Telugu (IndicTTS Telugu)
+# All relative paths are resolved relative to THIS file's directory.
+language: telugu
+seed: 1234
+
+dataset:
+  name: IndicTTS Telugu
+  hf_name: SPRINGLab/IndicTTS_Telugu # https://huggingface.co/datasets/SPRINGLab/IndicTTS_Telugu (Indic TTS licence)
+  hf_split: train                    # 8,576 utterances, 48 kHz, columns: audio, text, gender (0=female, 1=male)
+  audio_column: audio
+  text_column: text
+  speaker_columns: [gender]          # IndicTTS Telugu = one female + one male speaker
+  train_hours: 5.0
+  val_hours: 1.0
+  oversample: 1.04
+  min_duration: 1.0
+  max_duration: 11.0
+  # auto: a single speaker if one speaker alone has >= 6 h of usable audio,
+  # otherwise both speakers with a speaker embedding (see README > Data selection)
+  speaker_policy: auto
+
+path:
+  raw_path: data/corpus
+  lexicon_path: data/lexicon.txt
+  textgrid_path: data/TextGrid
+  mfa_model_path: data/mfa_telugu_acoustic_model.zip
+  preprocessed_path: data/preprocessed
+  checkpoint_path: checkpoints
+  log_path: logs
+  result_path: ../Results/Telugu
+  hifigan_path: ../vocoder/generator_universal.pth.tar
+
+mfa:
+  command: mfa
+  mode: train                        # train an MFA acoustic model on this corpus with our G2P lexicon
+  jobs: 4
+  extra_args: []
+
+preprocessing:
+  audio:
+    sampling_rate: 22050             # IndicTTS is 48 kHz; resampled to match the HiFi-GAN vocoder
+    max_wav_value: 32768.0
+    trim_top_db: 40
+  stft:
+    filter_length: 1024
+    hop_length: 256
+    win_length: 1024
+  mel:
+    n_mel_channels: 80
+    mel_fmin: 0
+    mel_fmax: 8000
+  pitch:
+    feature: phoneme_level
+    f0_min: 60
+    f0_max: 600
+  energy:
+    feature: phoneme_level
+  min_frames: 20
+
+model:
+  transformer:                       # reference implementation (ming024) settings; paper Table 7 uses 4 decoder layers
+    encoder_layer: 4
+    encoder_head: 2
+    encoder_hidden: 256
+    decoder_layer: 6
+    decoder_head: 2
+    decoder_hidden: 256
+    conv_filter_size: 1024
+    conv_kernel_size: [9, 1]
+    encoder_dropout: 0.2
+    decoder_dropout: 0.2
+  variance_predictor:
+    filter_size: 256
+    kernel_size: 3
+    dropout: 0.5
+  variance_embedding:
+    pitch_quantization: linear
+    energy_quantization: linear
+    n_bins: 256
+  multi_speaker: true                # only used if more than one speaker is selected
+  max_seq_len: 1000
+
+train:
+  batch_size: 16
+  group_size: 4
+  grad_acc_step: 1
+  grad_clip_thresh: 1.0
+  total_step: 40000
+  log_step: 100
+  val_step: 1000
+  save_step: 5000
+  keep_last_checkpoints: 3
+  num_workers: 2
+  deterministic: false
+  optimizer:
+    betas: [0.9, 0.98]
+    eps: 1.0e-9
+    weight_decay: 0.0
+    warm_up_step: 4000
+    anneal_steps: [20000, 30000, 35000]
+    anneal_rate: 0.3
+
+inference:
+  speaker: auto
+  vocoder: hifigan

@@ -1,0 +1,39 @@
+2026-11-07 17:11:01 [train] telugu: 2724 train / 558 val utterances, 2 speaker(s), vocab 52, device cuda
+2026-11-07 17:11:04 [train] FastSpeech2 parameters: 35.08 M
+2026-11-07 17:11:55 [train] step 100/3000 lr 2.47e-05 total=13.2614 mel=4.5898 postnet_mel=4.3969 pitch=1.4601 energy=1.4348 duration=1.3797 | 48s
+2026-11-07 17:12:42 [train] step 200/3000 lr 4.94e-05 total=9.1830 mel=3.7417 postnet_mel=3.3679 pitch=0.9829 energy=0.7918 duration=0.2987 | 95s
+2026-11-07 17:13:35 [train] step 300/3000 lr 7.41e-05 total=6.6504 mel=2.7498 postnet_mel=2.4044 pitch=0.8120 energy=0.4962 duration=0.1881 | 148s
+2026-11-07 17:14:29 [train] step 400/3000 lr 9.88e-05 total=4.6839 mel=1.8411 postnet_mel=1.5720 pitch=0.7167 energy=0.4050 duration=0.1491 | 203s
+2026-11-07 17:15:19 [train] step 500/3000 lr 1.24e-04 total=3.6701 mel=1.3079 postnet_mel=1.2003 pitch=0.6733 energy=0.3570 duration=0.1315 | 252s
+2026-11-07 17:16:10 [train] step 600/3000 lr 1.48e-04 total=3.0937 mel=0.9991 postnet_mel=1.0337 pitch=0.6274 energy=0.3165 duration=0.1170 | 304s
+2026-11-07 17:17:02 [train] step 700/3000 lr 1.73e-04 total=2.8300 mel=0.8681 postnet_mel=0.9505 pitch=0.6052 energy=0.2968 duration=0.1095 | 356s
+2026-11-07 17:17:54 [train] step 800/3000 lr 1.98e-04 total=2.6749 mel=0.8142 postnet_mel=0.9035 pitch=0.5710 energy=0.2866 duration=0.0995 | 408s
+2026-11-07 17:18:45 [train] step 900/3000 lr 2.22e-04 total=2.5668 mel=0.7825 postnet_mel=0.8667 pitch=0.5597 energy=0.2646 duration=0.0934 | 459s
+2026-11-07 17:19:36 [train] step 1000/3000 lr 2.47e-04 total=2.5018 mel=0.7660 postnet_mel=0.8604 pitch=0.5301 energy=0.2544 duration=0.0908 | 510s
+2026-11-07 17:19:45 [val] step 1000: total=2.6535 mel=0.7916 postnet_mel=1.0165 pitch=0.5358 energy=0.2428 duration=0.0667
+2026-11-07 17:19:47 [val] new best validation loss 2.6535 -> best.pth.tar
+2026-11-07 17:20:41 [train] step 1100/3000 lr 2.72e-04 total=2.4359 mel=0.7467 postnet_mel=0.8706 pitch=0.4963 energy=0.2338 duration=0.0885 | 575s
+2026-11-07 17:21:32 [train] step 1200/3000 lr 2.96e-04 total=2.4208 mel=0.7387 postnet_mel=0.8247 pitch=0.5172 energy=0.2522 duration=0.0879 | 625s
+2026-11-07 17:22:25 [train] step 1300/3000 lr 3.21e-04 total=2.2381 mel=0.7063 postnet_mel=0.7714 pitch=0.4572 energy=0.2210 duration=0.0822 | 678s
+2026-11-07 17:23:15 [train] step 1400/3000 lr 3.46e-04 total=2.1906 mel=0.6951 postnet_mel=0.7516 pitch=0.4506 energy=0.2132 duration=0.0800 | 729s
+2026-11-07 17:24:08 [train] step 1500/3000 lr 3.71e-04 total=2.1105 mel=0.6775 postnet_mel=0.7186 pitch=0.4236 energy=0.2126 duration=0.0782 | 782s
+2026-11-07 17:24:58 [train] step 1600/3000 lr 3.95e-04 total=2.0231 mel=0.6617 postnet_mel=0.6976 pitch=0.3869 energy=0.2003 duration=0.0767 | 831s
+2026-11-07 17:25:50 [train] step 1700/3000 lr 4.20e-04 total=2.0156 mel=0.6579 postnet_mel=0.6837 pitch=0.3981 energy=0.1998 duration=0.0760 | 884s
+2026-11-07 17:26:41 [train] step 1800/3000 lr 4.45e-04 total=1.9216 mel=0.6435 postnet_mel=0.6654 pitch=0.3524 energy=0.1834 duration=0.0769 | 935s
+2026-11-07 17:27:32 [train] step 1900/3000 lr 4.69e-04 total=1.8960 mel=0.6339 postnet_mel=0.6515 pitch=0.3495 energy=0.1872 duration=0.0738 | 986s
+2026-11-07 17:28:23 [train] step 2000/3000 lr 4.94e-04 total=1.8434 mel=0.6264 postnet_mel=0.6428 pitch=0.3273 energy=0.1739 duration=0.0729 | 1037s
+2026-11-07 17:28:32 [val] step 2000: total=2.1166 mel=0.6458 postnet_mel=0.6503 pitch=0.5370 energy=0.2219 duration=0.0616
+2026-11-07 17:28:33 [val] new best validation loss 2.1166 -> best.pth.tar
+2026-11-07 17:29:30 [train] step 2100/3000 lr 5.19e-04 total=1.8359 mel=0.6271 postnet_mel=0.6421 pitch=0.3260 energy=0.1678 duration=0.0729 | 1104s
+2026-11-07 17:30:20 [train] step 2200/3000 lr 5.44e-04 total=1.8003 mel=0.6165 postnet_mel=0.6297 pitch=0.3117 energy=0.1730 duration=0.0693 | 1153s
+2026-11-07 17:31:11 [train] step 2300/3000 lr 5.68e-04 total=1.7390 mel=0.6057 postnet_mel=0.6148 pitch=0.2887 energy=0.1621 duration=0.0676 | 1205s
+2026-11-07 17:32:01 [train] step 2400/3000 lr 5.93e-04 total=1.7430 mel=0.6065 postnet_mel=0.6184 pitch=0.2867 energy=0.1628 duration=0.0685 | 1255s
+2026-11-07 17:32:51 [train] step 2500/3000 lr 6.18e-04 total=1.6855 mel=0.5984 postnet_mel=0.6084 pitch=0.2622 energy=0.1509 duration=0.0656 | 1304s
+2026-11-07 17:33:45 [train] step 2600/3000 lr 6.42e-04 total=1.6758 mel=0.5942 postnet_mel=0.6043 pitch=0.2598 energy=0.1503 duration=0.0672 | 1359s
+2026-11-07 17:34:34 [train] step 2700/3000 lr 6.67e-04 total=1.6646 mel=0.5923 postnet_mel=0.6009 pitch=0.2591 energy=0.1478 duration=0.0644 | 1408s
+2026-11-07 17:35:25 [train] step 2800/3000 lr 6.92e-04 total=1.6271 mel=0.5844 postnet_mel=0.5932 pitch=0.2476 energy=0.1400 duration=0.0617 | 1459s
+2026-11-07 17:36:16 [train] step 2900/3000 lr 7.16e-04 total=1.6164 mel=0.5805 postnet_mel=0.5880 pitch=0.2460 energy=0.1379 duration=0.0640 | 1510s
+2026-11-07 17:37:09 [train] step 3000/3000 lr 7.41e-04 total=1.5972 mel=0.5808 postnet_mel=0.5882 pitch=0.2280 energy=0.1380 duration=0.0622 | 1562s
+2026-11-07 17:37:17 [val] step 3000: total=2.1835 mel=0.6601 postnet_mel=0.6680 pitch=0.5637 energy=0.2298 duration=0.0619
+2026-11-07 17:37:26 [train] saved /content/project/Telugu/checkpoints/step_3000.pth.tar
+2026-11-07 17:37:30 [train] finished at step 3000 (total_step reached); non-finite batches skipped: 0; best val 2.1166; inference export: /content/project/Telugu/checkpoints/telugu_fastspeech2_fp16.pth

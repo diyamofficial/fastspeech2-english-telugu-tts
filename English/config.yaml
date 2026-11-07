@@ -1,0 +1,106 @@
+# FastSpeech 2 - English (Svarah, Indian-accented English)
+# All relative paths are resolved relative to THIS file's directory.
+language: english
+seed: 1234
+
+dataset:
+  name: Svarah
+  hf_name: ai4bharat/Svarah          # https://huggingface.co/datasets/ai4bharat/Svarah (CC BY 4.0)
+  hf_split: test                     # Svarah is published as a single "test" split (6,656 utts, ~9.6 h, 117 speakers)
+  audio_column: audio_filepath
+  text_column: text
+  # Svarah on HF has no speaker_id column; speakers are identified by their
+  # per-speaker demographic profile (see README > Data selection).
+  speaker_columns: [gender, age-group, primary_language, native_place_state, native_place_district,
+                    highest_qualification, job_category, occupation_domain]
+  train_hours: 5.0
+  val_hours: 1.0
+  oversample: 1.04                   # small margin for utterances lost in alignment/filtering
+  min_duration: 1.0                  # seconds
+  max_duration: 11.0                 # keeps every utterance under max_seq_len mel frames
+  speaker_policy: all                # multi-speaker (no single Svarah speaker has 6 h)
+
+path:
+  raw_path: data/corpus              # MFA corpus: <speaker>/<uid>.wav + .lab
+  lexicon_path: data/lexicon.txt
+  textgrid_path: data/TextGrid
+  preprocessed_path: data/preprocessed
+  checkpoint_path: checkpoints
+  log_path: logs
+  result_path: ../Results/English
+  hifigan_path: ../vocoder/generator_universal.pth.tar
+
+mfa:
+  command: mfa                       # Colab: "micromamba run -n mfa mfa" (or set MFA_CMD)
+  mode: align                        # pretrained ARPAbet acoustic model + our g2p_en lexicon
+  acoustic_model: english_us_arpa
+  jobs: 4
+  extra_args: ["--beam", "100", "--retry_beam", "400"]   # wider beam: accented, varied recording conditions
+
+preprocessing:
+  audio:
+    sampling_rate: 22050
+    max_wav_value: 32768.0
+    trim_top_db: 40
+  stft:
+    filter_length: 1024
+    hop_length: 256
+    win_length: 1024
+  mel:
+    n_mel_channels: 80
+    mel_fmin: 0
+    mel_fmax: 8000                   # must match the universal HiFi-GAN vocoder
+  pitch:
+    feature: phoneme_level           # as in the reference implementation's LJSpeech config
+    f0_min: 60
+    f0_max: 600
+  energy:
+    feature: phoneme_level
+  min_frames: 20
+
+model:
+  transformer:                       # reference implementation (ming024) settings; paper Table 7 uses 4 decoder layers
+    encoder_layer: 4
+    encoder_head: 2
+    encoder_hidden: 256
+    decoder_layer: 6
+    decoder_head: 2
+    decoder_hidden: 256
+    conv_filter_size: 1024
+    conv_kernel_size: [9, 1]
+    encoder_dropout: 0.2
+    decoder_dropout: 0.2
+  variance_predictor:
+    filter_size: 256
+    kernel_size: 3
+    dropout: 0.5
+  variance_embedding:
+    pitch_quantization: linear
+    energy_quantization: linear
+    n_bins: 256
+  multi_speaker: true
+  max_seq_len: 1000
+
+train:
+  batch_size: 16
+  group_size: 4
+  grad_acc_step: 1
+  grad_clip_thresh: 1.0
+  total_step: 40000
+  log_step: 100
+  val_step: 1000
+  save_step: 5000
+  keep_last_checkpoints: 3
+  num_workers: 2
+  deterministic: false
+  optimizer:
+    betas: [0.9, 0.98]
+    eps: 1.0e-9
+    weight_decay: 0.0
+    warm_up_step: 4000
+    anneal_steps: [20000, 30000, 35000]
+    anneal_rate: 0.3
+
+inference:
+  speaker: auto                      # "auto" = speaker with the most training audio, or a speaker label
+  vocoder: hifigan                   # falls back to Griffin-Lim if the weights are missing
